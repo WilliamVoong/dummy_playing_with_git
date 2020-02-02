@@ -1,0 +1,54 @@
+import java.awt.Component;
+import java.awt.GridLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.xml.bind.Marshaller.Listener;
+
+
+/**
+ * 
+ * Creates the gamepanel, with no Cells (buttons), the buttons are added later in Main
+ * 
+ */
+public class GameWindow extends JFrame implements PropertyChangeListener  {
+	private JFrame frame; 
+	private JPanel panel; 
+	public final static int WINDOW_HEIGHT=600;
+	public final static int WINDOW_WIDTH=600;
+	
+	GameWindow(){
+		System.out.println("you win");
+		GridLayout grid= new GridLayout(4,4);
+		frame= new JFrame("fifteen game");
+		panel= new JPanel(grid);
+		panel.setVisible(true);
+		frame.add(panel); 
+		frame.setSize(WINDOW_HEIGHT, WINDOW_WIDTH);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel.addPropertyChangeListener(this);
+		
+	}
+	
+	public Component add(Component c) {
+		panel.add(c);
+		panel.repaint();
+		return panel;
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
+		System.out.println("you win");
+		if (event.getPropertyName().equals("MyTextProperty")) {
+            System.out.println("you win");
+        }
+		
+	}
+
+	
+	
+	
+}
